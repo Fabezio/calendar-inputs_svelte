@@ -7,24 +7,18 @@
 
 	import { month, dates, checked, selectedDates } from '$lib/_store/month';
 	import { name } from '$lib/_store/users';
-	// import { gridTemplateColumn } from '$lib/_store/grid';
-	// const gridTemplateColumn = "grid-template-columns: 10em repeat({$month.length}, 2em) repeat(2, 2em);"
-
 
 	import Form from '$lib/Form.svelte';
+	import TableField from '$lib/TableField.svelte';
+	import Checked from '$lib/Checked.svelte';
 
 	let usersList = [...db.users];
 
-	// import { db } from "$lib/data/db";
-	// import dateFormat, { masks } from 'dateformat';
-
-	// import format from 'date-format';
 	$month = [...Array(30).keys()];
 	$selectedDates = [];
 
-	// console.log($month);
 	$dates = [];
-	function makeDates() {
+	$: {
 		$month.map((day, i) => {
 			const thisDate = `2021-11-${day + 1}`;
 			const newDate = new Date(thisDate);
@@ -40,10 +34,7 @@
 			];
 			return $dates;
 		});
-		// console.log($dates);
 	}
-
-	$: makeDates();
 
 	$checked = [];
 
@@ -70,55 +61,21 @@
 	<h1>Input Checkboxes</h1>
 
 	<h2 class="my-3">
-		<!-- date format standard {date} -->
 		aujourd'hui: {thisFormat}
-		<!-- try editing <strong>src/routes/index.svelte</strong> -->
 	</h2>
 
 	<!-- <Counter /> -->
 
-	<div
-		class="inputs fw-bold text-center fs-6"
-		style="grid-template-columns: 10em repeat({$month.length}, 2em) repeat(2, 2em);"
-
-	>
-		<!-- <label for="">nom</label> -->
-		<div>noms</div>
-		{#each $dates as { day, dayLetter }}
-			<div class="">
-				<div class="">
-					{day}
-				</div>
-				<div class="">
-					{dayLetter}
-				</div>
-			</div>
-		{/each}
-
-		<div class="">actions</div>
-	</div>
+	<TableField />
 	<Form />
-
-	{#each $checked as { name, dates }}
-		{#if $checked.length}
-			{$checked.length}
-			<div>{name} <span>{dates.join(', ')}</span></div>
-		{/if}
-	{/each}
+	<Checked />
 </section>
 
 <style>
-	.inputs {
-		display: grid;
-		grid-gap: 1px;
-
-		/* border-width: 0px; */
-	}
-
 	section {
 		display: flex;
 		flex-direction: column;
-		/* justify-content: center; */
+
 		align-items: center;
 		flex: 1;
 	}

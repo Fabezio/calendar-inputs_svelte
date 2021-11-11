@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { month, dates, checked, selectedDates } from '$lib/_store/month';
 	import { name } from '$lib/_store/users';
-	// import { gridTemplateColumn } from '$lib/_store/style';
 
 	import { db } from '$lib/data/db';
-	import FormButtons from './actions/FormButtons.svelte';
-	// const month = [...Array(30).keys()];
+	import FormButtons from '$lib/actions/FormButtons.svelte';
+	import Inputs from '$lib/actions/Inputs.svelte';
+
 	$name = '';
 	function submitJobs() {
 		$checked = [...$checked, { name: $name, dates: $selectedDates }];
@@ -27,19 +27,9 @@
 	}
 </script>
 
-<div
-	class="inputs"
-	style="grid-template-columns: 10em repeat({$month.length}, 2em) repeat(2, 2em);"
->
+<Inputs>
 	<div>
-		<input
-			type="text"
-			autofocus
-			class="text-input"
-			bind:value={$name}
-			list="names-hint"
-			placeholder="nom"
-		/>
+		<input type="text" class="text-input" bind:value={$name} list="names-hint" placeholder="nom" />
 		<datalist id="names-hint" name="choix">
 			{#each db.users as { nom, prenom }}
 				<option value="{nom} {prenom}" />
@@ -58,15 +48,9 @@
 		>
 		<button type="reset" class="btn btn-danger"><i class="fas fa-times fa-xl" /></button>
 	</div> -->
-</div>
+</Inputs>
 
 <style>
-	.inputs {
-		display: grid;
-		grid-gap: 1px;
-
-		/* border-width: 0px; */
-	}
 	input {
 		width: 100%;
 		height: 32px;
