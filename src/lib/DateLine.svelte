@@ -1,15 +1,28 @@
-<script lang="ts">
-	import { month, dates, checked, selectedDates } from '$lib/_store/month';
+<script>
+	import { month, dates, checked, selectedDates, jobs } from '$lib/_store/month';
 	import { name } from '$lib/_store/users';
-
 	import { db } from '$lib/data/db';
+
 	import FormButtons from '$lib/actions/FormButtons.svelte';
 	import Inputs from '$lib/actions/Inputs.svelte';
+	import Switch from '$lib/actions/Switch.svelte';
+
+	let ssiap2 = true;
+	let day = true;
+	let disabled = false;
+	const handleSwitch = () => {
+		if (!ssiap2) {
+			day = false;
+			disabled = true;
+		}
+	};
 
 	$name = '';
 	function submitJobs() {
-		$checked = [...$checked, { name: $name, dates: $selectedDates }];
-		if ($selectedDates.length) $selectedDates = [];
+		$checked = { name: $name, dates: $selectedDates };
+		$jobs = [...$jobs, $checked];
+		$checked = [];
+
 		return $checked;
 	}
 
@@ -31,11 +44,13 @@
 	<div>
 		<input type="text" class="text-input" bind:value={$name} list="names-hint" placeholder="nom" />
 		<datalist id="names-hint" name="choix">
-			{#each db.users as { nom, prenom }}
+			{#each db.users as { id, nom, prenom }}
 				<option value="{nom} {prenom}" />
 			{/each}
 		</datalist>
 	</div>
+	<Switch val={ssiap2} />
+	<Switch val={day} />
 
 	{#each $dates as { day }}
 		<input class="checkbox" on:change={addDate(day)} bind:value={selectdate} type="checkbox" />
@@ -62,9 +77,8 @@
 	}
 
 	input[type='checkbox'] {
-		width: 32px;
-		height: 32px;
-		/* border: 1px solid red; */
+		/* width: 32px;
+		height: 32px; */
 	}
 	input:checked {
 		/* background: green; */

@@ -5,7 +5,7 @@
 <script lang="ts">
 	import { db } from '$lib/data/db';
 
-	import { month, dates, checked, selectedDates } from '$lib/_store/month';
+	import { month, dates, checked, selectedDates, jobs } from '$lib/_store/month';
 	import { name } from '$lib/_store/users';
 
 	import Form from '$lib/Form.svelte';
@@ -38,7 +38,7 @@
 
 	$checked = [];
 
-	const today = '2021-11-6';
+	const today = '2021-11-12';
 	const monthLength = parseInt(today.split('-')[1]);
 	const date = new Date(today);
 	$name = '';
@@ -63,8 +63,6 @@
 	<h2 class="my-3">
 		aujourd'hui: {thisFormat}
 	</h2>
-
-	<!-- <Counter /> -->
 
 	<TableField />
 	<Form />
