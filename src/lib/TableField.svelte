@@ -6,8 +6,7 @@
 <Input option="fw-bold text-center fs-6">
 	<!-- <label for="">nom</label> -->
 	<div>NOMS</div>
-	<div>SSIAP 2</div>
-	<div>JOUR</div>
+	<div>Vacation</div>
 
 	{#each $dates as { day, dayLetter }}
 		<div class="">

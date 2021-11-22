@@ -5,7 +5,7 @@
 
 <div
 	class="inputs {option}"
-	style="grid-template-columns: 10em repeat(2, 5em) repeat({$month.length}, 2em) repeat(2, 2em);"
+	style="grid-template-columns: 10em repeat(1, 10em) repeat({$month.length}, 2em) repeat(2, 2em);"
 >
 	<slot />
 </div>

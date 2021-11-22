@@ -8,8 +8,17 @@
 	import Switch from '$lib/actions/Switch.svelte';
 
 	let ssiap2 = true;
+	let job=""
 	let day = true;
 	let disabled = false;
+	let rank =""
+	let jobType = ""
+	$: if (job.length){
+		rank=job.split(" ")[0]
+		jobType=job.split(" ")[1]
+
+	}
+	
 	const handleSwitch = () => {
 		if (!ssiap2) {
 			day = false;
@@ -19,11 +28,12 @@
 
 	$name = '';
 	function submitJobs() {
-		$checked = { name: $name, dates: $selectedDates };
+		console.log(day, ssiap2)
+		$checked = { name: $name, rank, jobType, dates: $selectedDates };
 		$jobs = [...$jobs, $checked];
 		$checked = [];
 
-		return $checked;
+		return $jobs, $checked;
 	}
 
 	let selectdate = '';
@@ -49,8 +59,20 @@
 			{/each}
 		</datalist>
 	</div>
-	<Switch val={ssiap2} />
-	<Switch val={day} />
+	<div  >
+
+		<select class="form-select border border-dark"
+ id="job"  name="job" bind:value={job}>
+
+			<option class="text-dark" >--Choisir une vacation--</option>
+			<option class="text-dark" value="SSIAP2 Jour">SSIAP2 JOUR</option>
+			<option class="text-dark" value="SSIAP2 Nuit">SSIAP2 NUIT</option>
+			<option class="text-dark" value="SSIAP1 Jour">SSIAP1 JOUR</option>
+		</select>
+		
+	</div>
+	<!-- <Switch  bind:this={ssiap2} val={ssiap2} />
+	<Switch  bind:this={day} val={day} /> -->
 
 	{#each $dates as { day }}
 		<input class="checkbox" on:change={addDate(day)} bind:value={selectdate} type="checkbox" />
@@ -64,6 +86,7 @@
 		<button type="reset" class="btn btn-danger"><i class="fas fa-times fa-xl" /></button>
 	</div> -->
 </Inputs>
+{rank} {jobType}
 
 <style>
 	input {
@@ -74,6 +97,13 @@
 		margin-right: 5px;
 		margin-top: 1px;
 		padding: 5px;
+	}
+	div select {
+		margin-right: 5px; margin-top: 2px; padding: 3px;
+
+		width: 100%;
+		/* margin: 0;
+		padding: 0; */
 	}
 
 	input[type='checkbox'] {
