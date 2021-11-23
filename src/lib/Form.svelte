@@ -1,7 +1,12 @@
 <script>
 	import { Form, FormGroup, Input, Button } from 'sveltestrap';
-	import { month, dates, checked, selectedDates, jobs } from '$lib/_store/month';
-	import { name } from '$lib/_store/users';
+	// import { month, dates, checked, selectedDates, jobs } from '$lib/_store/month';
+	// import { name } from '$lib/_store/users';
+	import {month, dates, checked, selectedDates, jobs, selectdate} from '$lib/_store/month'; 
+	import {name,
+rank,
+jobType, job} from '$lib/_store/users';
+
 	import FormButtons from './actions/FormButtons.svelte';
 	import DateLine from './DateLine.svelte';
 
@@ -11,13 +16,27 @@
 		// const filter = usersList.filter({nom, prenom}=> (nom===))
 	}
 	function submitJobs() {
-		$checked = { name: $name, dates: $selectedDates };
+		// console.log(day, ssiap2);
+		$checked = { name: $name, rank: $rank, jobType: $jobType, dates: $selectedDates };
 		$jobs = [...$jobs, $checked];
-		$checked = [];
+		$checked = {};
+		$job = '';
+		$rank = '';
+		$jobType = '';
+		$selectedDates = []
+		$dates.map((d,i)=> {
+		$selectedDates = [...$selectedDates, {day: d.day, checked: false}];
+		return $selectedDates
+	})
+// $dates.map((d,i)=> {
+// 		$selectedDates = [...$selectedDates, {day: d.day, checked: false}];
+// 		return $selectedDates
+// 	})
 		$name = '';
+		$selectdate = '';
+		// $dates = []
 
-		// if ($selectedDates.length) $selectedDates = [];
-		return $checked;
+		return $jobs;
 	}
 	const cancelForm = () => {
 		$checked = [];

@@ -5,3 +5,4 @@ export const dates = writable([]);
 export const checked = writable({});
 export const selectedDates = writable([]);
 export const jobs = writable([]);
+export const selectdate = writable('');
