@@ -1,16 +1,17 @@
 <script>
-	import { month, dates, checked, selectedDates, jobs, selectdate } from '$lib/_store/month';
-	import { name, rank, jobType, job } from '$lib/_store/users';
+	import { month, dates, checked, selectedDates, jobs, selectdate, missions } from '$lib/_store/month';
+	import { name, rank, jobType, job, thoseUsers } from '$lib/_store/users';
 	import { db } from '$lib/data/db';
 
 	import FormButtons from '$lib/actions/FormButtons.svelte';
 	import Inputs from '$lib/actions/Inputs.svelte';
+	import Form from './Form.svelte';
 	// import Switch from '$lib/actions/Switch.svelte';
-
+	
 	$job = '';
 	$rank = '';
 	$jobType = '';
-	$selectdate = "";
+	$selectdate = '';
 	// let thisDay = {day: $selectdate, checked:false}
 
 	let ssiap2 = true;
@@ -28,19 +29,17 @@
 			disabled = true;
 		}
 	};
-	$selectedDates=[]
+	$selectedDates = [];
 	$name = '';
-	$dates.map((d,i)=> {
-		$selectedDates = [...$selectedDates, {day: d.day, checked: false}];
-		return $selectedDates
-	})
-	
+	$dates.map((d, i) => {
+		$selectedDates = [...$selectedDates, { day: d.day, checked: false }];
+		return $selectedDates;
+	});
+	$thoseUsers = [...db.users];
 
 	function addDate(day, checked) {
-		console.log(day, checked)
+		console.log(day, checked);
 
-		
-		
 		// $selectedDates.map((item, i) => {
 		// 	if (!$selectedDates[i].checked) {
 		// 		console.log(`${item} déjà dans la liste`);
@@ -49,50 +48,38 @@
 
 		// 		$selectedDates = [...$selectedDates, day];
 		// 	}
-			// console.log(monthDays);
+		// console.log(monthDays);
 		// });
-		
-		
-
 
 		// monthDays.map()
 	}
-	$: console.log($selectedDates)
+	// $: console.log($selectedDates)
 </script>
 
 <Inputs>
 	<div>
 		<input type="text" class="text-input" bind:value={$name} list="names-hint" placeholder="nom" />
 		<datalist id="names-hint" name="choix">
-			{#each db.users as { id, nom, prenom }}
-				<option value="{nom} {prenom}" />
+			{#each $thoseUsers as { id, nom, prenom, completeName }}
+				<option value={completeName} />
 			{/each}
 		</datalist>
 	</div>
-	<div>
-		<select class="form-select border border-dark" id="job" name="job" bind:value={$job}>
-			<option class="text-dark">--Choisir une vacation--</option>
-			<option class="text-dark" value="SSIAP2 Jour">SSIAP2 JOUR</option>
-			<option class="text-dark" value="SSIAP2 Nuit">SSIAP2 NUIT</option>
-			<option class="text-dark" value="SSIAP1 Jour">SSIAP1 JOUR</option>
-		</select>
-	</div>
+	
+
 	<!-- <Switch  bind:this={ssiap2} val={ssiap2} />
 	<Switch  bind:this={day} val={day} /> -->
 
-	{#each $selectedDates as { day, checked },i}
-	<input
-		class="checkbox"
-		on:change={() => checked = !checked}
-		bind:value={$selectdate}
-		type="checkbox"
-		checked={checked}
-		
-
-	/>
-	
+	{#each $selectedDates as { day, checked }, i}
+		<input
+			class="checkbox"
+			on:change={() => (checked = !checked)}
+			bind:value={$selectdate}
+			type="checkbox"
+			{checked}
+		/>
 	{/each}
-	<FormButtons  size="sm" />
+	<!-- <FormButtons size="sm" /> -->
 	<!-- <div class="btn-group btn-group-sm">
 		<button type="submit" class="btn btn-success"><i class="fas fa-plus fa-xl" /></button>
 		<button on:click={() => ($checked = [])} type="reset" class="btn btn-warning"

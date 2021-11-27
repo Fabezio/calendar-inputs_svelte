@@ -4,6 +4,7 @@
 
 	import '../../main.scss';
 	export let size = '';
+	// export let block = false;
 	const dispatch = createEventDispatcher();
 	const contents = [
 		{ type: 'submit', color: 'success', label: 'valider', icon: 'check', dispatcher: 'submit' },
@@ -42,5 +43,8 @@
 	@import '../../main.scss';
 	.text-shadow {
 		text-shadow: 1px 1px 0 rgba(127, 127, 127, 0.5);
+	}
+	div {
+		width: 100%;
 	}
 </style>

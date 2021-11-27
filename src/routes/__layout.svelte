@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Header from '$lib/header/Header.svelte';
+	import NavBar from '$lib/header/NavBar.svelte';
 	import '../app.css';
 </script>
 
+<NavBar />
 <!-- <Header /> -->
 
 <main>

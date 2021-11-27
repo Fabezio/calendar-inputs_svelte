@@ -6,7 +6,7 @@
 <Input option="fw-bold text-center fs-6">
 	<!-- <label for="">nom</label> -->
 	<div>NOMS</div>
-	<div>Vacation</div>
+	<!-- <div>Vacation</div> -->
 
 	{#each $dates as { day, dayLetter }}
 		<div class="">
@@ -19,5 +19,5 @@
 		</div>
 	{/each}
 
-	<div class="">actions</div>
+	<!-- <div class="">actions</div> -->
 </Input>

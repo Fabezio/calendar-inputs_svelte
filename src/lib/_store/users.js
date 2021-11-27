@@ -5,6 +5,7 @@ export const name = writable('');
 export const job = writable('');
 export const rank = writable('');
 export const jobType = writable('');
+export const thoseUsers = writable([]);
 // export const dates = writable([]);
 // export const checked = writable([]);
 // export const selectedDates = writable([]);
