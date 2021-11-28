@@ -7,11 +7,14 @@
 <NavBar />
 <!-- <Header /> -->
 
-<main>
-	<slot />
-</main>
+<div class="container">
+	<div class="my-4">
+		<slot />
 
-<footer>
+	</div>
+</div>
+
+<footer class="bg-secondary container-fluid fixed-bottom">
 	<!-- <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p> -->
 </footer>
 
@@ -32,12 +35,13 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 40px;
+		padding: 30px 0;
+		
 	}
 
 	@media (min-width: 480px) {
 		footer {
-			padding: 40px 0;
+			padding: 30px 0;
 		}
 	}
 </style>
