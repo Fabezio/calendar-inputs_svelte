@@ -146,7 +146,7 @@
 			</div>
 			<div class="col">
 				<!-- <label for="start-hour">Début</label> -->
-				<label for="start-hour">A</label>
+				<label for="start-hour">À</label>
 				
 				
 				<select class="form-control" bind:value={end} 	name="end-hour">
