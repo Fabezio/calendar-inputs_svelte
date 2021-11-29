@@ -30,7 +30,7 @@
 		{url: "/hours", label: "Horaires"},
 
 	]
-	console.log($page)
+	// console.log($page)
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
@@ -40,7 +40,7 @@
 		<span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="container navbar-nav me-auto mb-2 mb-lg-0">
+		<ul class="md-container	navbar-nav me-auto mb-2 mb-lg-0">
 		  <li class="nav-item">
 			<a sveltekit:prefetch class="nav-link {$page.path === '/' ? 'active' : ''}" href='/' >Accueil</a>
 		  </li>

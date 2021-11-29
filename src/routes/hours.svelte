@@ -1,4 +1,5 @@
 <script>
+	import HeadTitle from "$lib/header/HeadTitle.svelte"
 	import { services, jobTypes, workerRanks, hours } from '$lib/_store/jobs';
 	import FormButtons from '$lib/actions/FormButtons.svelte';
 	
@@ -119,34 +120,37 @@
 	}
 	$: console.log($hours)
 </script>
+<HeadTitle title="Ajouter une plage horaire" />
 
-<h1>Ajouter un horaire</h1>
 <form action="" on:keydown={handleKey} on:submit|preventDefault={addHours}>
 	
 			<div class="row">
 		<div class="col" >
 			
-				<label for="stepname">nom</label>	
-				<input class="form-control"  type="text" id="stepname" name="stepname" bind:value={stepname} />
+				<label for="stepname">Intitulé</label>	
+				<input class="form-control"  type="text" id="stepname" name="stepname" bind:value={stepname} placeholder="Nom" />
 			
 		</div>
 		<div class="col">
 			
-				<label for="start-hour">Début</label>
+				<label for="start-hour">De</label>
 				
 				
 				<select class="form-control" bind:value={start} 	name="start-hour">
+					<!-- <option value="Début">Début</option> -->
 					{#each hourList as item}
-						<option value={item}>{item}</option>
+					<option value={item}>{item}</option>
 					{/each}
 				</select>
-			
-		</div>
-		<div class="col">
-			<label for="start-hour">Début</label>
+				
+			</div>
+			<div class="col">
+				<!-- <label for="start-hour">Début</label> -->
+				<label for="start-hour">A</label>
 				
 				
 				<select class="form-control" bind:value={end} 	name="end-hour">
+					<!-- <option value="Fin">Fin</option> -->
 					{#each hourList as item}
 						<option value={item}>{item}</option>
 					{/each}
@@ -156,7 +160,7 @@
 		</div>	
 		<div class="d-grid my-3">
 		
-			<FormButtons size="md" />
+			<FormButtons size="lg" />
 		</div>
 		
 	<!--

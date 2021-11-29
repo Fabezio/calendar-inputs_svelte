@@ -7,10 +7,10 @@
 	// export let block = false;
 	const dispatch = createEventDispatcher();
 	const contents = [
-		{ type: 'submit', color: 'success', label: 'valider', icon: 'check', dispatcher: 'submit' },
+		{ type: 'submit', color: 'primary', label: 'valider', icon: 'check', dispatcher: 'submit' },
 		{
 			type: 'reset',
-			color: 'warning',
+			color: 'secondary',
 			label: 'effacer',
 			icon: 'arrow-counterclockwise',
 			dispatcher: 'reset'
@@ -26,10 +26,18 @@
 			{#if size === 'sm'}
 				<Icon name={icon} class="text-light fa-1x" />
 			{:else if size === 'lg'}
-				<Icon name={icon} class="fa-lg me-2" />
-				<span class=" text-light text-shadow">
-					{label.toUpperCase()}
-				</span>
+			<div class="row">
+<div class="col col-1">
+	<Icon name={icon} class="fa-lg me-2 text-light" />
+	
+</div>
+<div class="col col-10">
+	<span class=" text-light text-shadow">
+		{label.toUpperCase()}
+	</span>
+
+</div>
+			</div>
 			{:else}
 				<span class=" text-light text-shadow">
 					{label.toUpperCase()}
@@ -39,12 +47,3 @@
 	{/each}
 </ButtonGroup>
 
-<style lang="scss">
-	@import '../../main.scss';
-	.text-shadow {
-		text-shadow: 1px 1px 0 rgba(127, 127, 127, 0.5);
-	}
-	div {
-		width: 100%;
-	}
-</style>

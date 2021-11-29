@@ -55,12 +55,9 @@ $missions = [
 	const thisFormat = formatter.format(date);
 </script>
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
 
 <section>
-	<h1>Input Checkboxes</h1>
+	
 
 	<h2 class="my-3">
 		aujourd'hui: {thisFormat}
