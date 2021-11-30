@@ -9,11 +9,12 @@
   // import Button from "$lib/Compos/Button.svelte";
   // import NotifBar from "$lib/Compos/NotifBar.svelte";
   import { joursFeriés } from "$lib/data/joursferiés";
+  import HeadTitle from "$lib/header/HeadTitle.svelte"
 
   // const today = dateFormat(new Date(), "isoDate");
   // const thisDay = dateFormat(new Date(), "fullDate");
   //   const thisDay =
-
+ const formatter = Intl.DateTimeFormat('fr', {year: "numeric", month: "long", weekday:"long", day:"numeric"})
   let showAll = false;
   let addJob = false;
   let selected = ""; //temporaire
@@ -66,7 +67,7 @@
     fetchWorkers();
     fetchData();
   }
-  const pageTitle = "Plannings du mois de Septembre";
+  const pageTitle = "Planning du mois de Décembre";
 
   onMount(() => {
     fetchWorkers();
@@ -89,7 +90,7 @@
         newJobsList = [...newJobsList, item];
     });
     jobs = data;
-    return newJobsList;
+    return(  jobs);
   }
   async function removeJob(id) {
     const response = await axios.delete(`${url}/${id}`);
@@ -110,7 +111,18 @@
   }
 </script>
 
-{@debug jobs}
+<HeadTitle title={pageTitle} />
+{#each jobs as job}
+{#if job.date.split("-")[1] === "09"}
+  
+<div class="{job.isFerie || (formatter.format(new Date(job.date))).split(" ")[0] == 'samedi' || (formatter.format(new Date(job.date))).split(" ")[0] == 'dimanche' ? 'text-success': ''}">{formatter.format(new Date(job.date))} : <span> {job.chefJour.nom},   {job.chefNuit.nom} </span>; <span> {job.agentJour.nom}, {job.agentNuit.nom} </span>
+
+</div>
+{/if}
+  <!-- <div>{job.date}</div> -->
+{/each}
+
+
 
 <style>
   .grid {
