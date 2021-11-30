@@ -1,8 +1,8 @@
 <script>
-	import HeadTitle from "$lib/header/HeadTitle.svelte"
+	import HeadTitle from '$lib/header/HeadTitle.svelte';
 	import { services, jobTypes, workerRanks, hours } from '$lib/_store/jobs';
 	import FormButtons from '$lib/actions/FormButtons.svelte';
-	
+
 	import Select from '$lib/Forms/Select.svelte';
 	// import { prefetch } from "$app/navigation";
 	let stepname = '';
@@ -108,9 +108,9 @@
 	];
 	$hours = [];
 	function addHours() {
-		const newData = { stepname: stepname, from: start, to: end }
+		const newData = { stepname: stepname, from: start, to: end };
 		$hours = [...$hours, newData];
-		stepname = '';	
+		stepname = '';
 		start = '';
 		end = '';
 		return $hours;
@@ -118,59 +118,55 @@
 	function handleKey(e) {
 		if ((e.key = 'Enter')) addHours();
 	}
-	$: console.log($hours)
+	$: console.log($hours);
 </script>
+
 <HeadTitle title="Ajouter une plage horaire" />
 
 <form action="" on:keydown={handleKey} on:submit|preventDefault={addHours}>
-	
-			<div class="row">
-		<div class="col" >
-			
-				<label for="stepname">Intitulé</label>	
-				<input class="form-control"  type="text" id="stepname" name="stepname" bind:value={stepname} placeholder="Nom" />
-			
+	<div class="row">
+		<div class="col">
+			<label for="stepname">Intitulé</label>
+			<input
+				class="form-control"
+				type="text"
+				id="stepname"
+				name="stepname"
+				bind:value={stepname}
+				placeholder="Nom"
+			/>
 		</div>
 		<div class="col">
-			
-				<label for="start-hour">De</label>
-				
-				
-				<select class="form-control" bind:value={start} 	name="start-hour">
-					<!-- <option value="Début">Début</option> -->
-					{#each hourList as item}
+			<label for="start-hour">De</label>
+
+			<select class="form-control" bind:value={start} name="start-hour">
+				<!-- <option value="Début">Début</option> -->
+				{#each hourList as item}
 					<option value={item}>{item}</option>
-					{/each}
-				</select>
-				
-			</div>
-			<div class="col">
-				<!-- <label for="start-hour">Début</label> -->
-				<label for="start-hour">À</label>
-				
-				
-				<select class="form-control" bind:value={end} 	name="end-hour">
-					<!-- <option value="Fin">Fin</option> -->
-					{#each hourList as item}
-						<option value={item}>{item}</option>
-					{/each}
-				</select>
-				
-			</div>
-		</div>	
-		<div class="d-grid my-3">
-		
-			<FormButtons size="lg" />
+				{/each}
+			</select>
 		</div>
-		
+		<div class="col">
+			<!-- <label for="start-hour">Début</label> -->
+			<label for="start-hour">À</label>
+
+			<select class="form-control" bind:value={end} name="end-hour">
+				<!-- <option value="Fin">Fin</option> -->
+				{#each hourList as item}
+					<option value={item}>{item}</option>
+				{/each}
+			</select>
+		</div>
+	</div>
+	<div class="d-grid my-3">
+		<FormButtons size="lg" />
+	</div>
+
 	<!--
 
 		<div>{stepname}: {start} - {end}</div>
 	-->
-		
-
-	
 </form>
-{#each $hours as {stepname, from, to}}
+{#each $hours as { stepname, from, to }}
 	<div>{stepname}: {from} - {to}</div>
 {/each}

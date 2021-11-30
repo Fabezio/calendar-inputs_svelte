@@ -62,12 +62,12 @@
 				}
 			});
 
-			newMap = [...newMap, {jobType, rank, workerDates}]
+			newMap = [...newMap, { jobType, rank, workerDates }];
 			console.log(workerDates);
 		});
 		return newMap;
 	}
-	console.log("Missions planifiées:",$jobs)
+	console.log('Missions planifiées:', $jobs);
 	// console.log(newMap)
 	makeTimemap();
 </script>

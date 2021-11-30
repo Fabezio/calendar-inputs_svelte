@@ -1,13 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-const { model, Schema } = mongoose
+const { model, Schema } = mongoose;
 
 export const workerSch = new Schema({
-  nom: { type: String, required: true },
-  prenom: String,
-  phone: String,
-  email: String
+	nom: { type: String, required: true },
+	prenom: String,
+	phone: String,
+	email: String
+});
 
-})
-
-export const Worker = model('Worker', workerSch)
+export const Worker = model('Worker', workerSch);

@@ -1,5 +1,5 @@
 <script>
-	import HeadTitle from "$lib/header/HeadTitle.svelte"
+	import HeadTitle from '$lib/header/HeadTitle.svelte';
 	import { services, jobTypes, workerRanks, hours } from '$lib/_store/jobs';
 	import FormButtons from '$lib/actions/FormButtons.svelte';
 	import { FormGroup, Label, Input, Form } from 'sveltestrap';
@@ -16,6 +16,7 @@
 		if ((e.key = 'Enter')) addJob();
 	}
 </script>
+
 <HeadTitle title="Ajouter une mission" />
 <!-- <h1>Ajouter une mission</h1> -->
 <form action="" on:keydown={handleKey} on:submit|preventDefault={addJob}>

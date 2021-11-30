@@ -1,5 +1,13 @@
 <script>
-	import { month, dates, checked, selectedDates, jobs, selectdate, missions } from '$lib/_store/month';
+	import {
+		month,
+		dates,
+		checked,
+		selectedDates,
+		jobs,
+		selectdate,
+		missions
+	} from '$lib/_store/month';
 	import { name, rank, jobType, job, thoseUsers } from '$lib/_store/users';
 	import { db } from '$lib/data/db';
 
@@ -7,7 +15,7 @@
 	import Inputs from '$lib/actions/Inputs.svelte';
 	import Form from './Form.svelte';
 	// import Switch from '$lib/actions/Switch.svelte';
-	
+
 	$job = '';
 	$rank = '';
 	$jobType = '';
@@ -65,7 +73,6 @@
 			{/each}
 		</datalist>
 	</div>
-	
 
 	<!-- <Switch  bind:this={ssiap2} val={ssiap2} />
 	<Switch  bind:this={day} val={day} /> -->

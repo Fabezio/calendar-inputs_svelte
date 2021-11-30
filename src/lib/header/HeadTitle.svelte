@@ -1,6 +1,6 @@
 <script>
-    let urlTitle="Calendar Inputs"
-    export let title = "ajouter un titre"
+	let urlTitle = 'Calendar Inputs';
+	export let title = 'ajouter un titre';
 </script>
 
 <svelte:head><title>{urlTitle} | {title}</title></svelte:head>

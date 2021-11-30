@@ -15,8 +15,6 @@ const dbName = 'timemap';
 // 	.connect(uri, connectOptions)
 // 	.then(() => console.log(dbName, 'DB ready'));
 
-
 export default async function main() {
-  await mongoose.connect(uri).then(() => console.log(dbName, 'DB ready'));
-  
-};
+	await mongoose.connect(uri).then(() => console.log(dbName, 'DB ready'));
+}

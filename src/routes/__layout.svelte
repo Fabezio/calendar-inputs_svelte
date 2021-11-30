@@ -10,7 +10,6 @@
 <div class="container">
 	<div class="my-4">
 		<slot />
-
 	</div>
 </div>
 
@@ -36,7 +35,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 30px 0;
-		
 	}
 
 	@media (min-width: 480px) {

@@ -1,5 +1,3 @@
-
-
 <script lang="ts">
 	import { db } from '$lib/data/db';
 
@@ -9,11 +7,7 @@
 	import Form from '$lib/Form.svelte';
 	import TableField from '$lib/TableField.svelte';
 	import Checked from '$lib/Checked.svelte';
-$missions = [
-		{label: "SSIAP2 JOUR"},
-		{label: "SSIAP2 NUIT"},
-		{label: "SSIAP1 JOUR"},
-	]
+	$missions = [{ label: 'SSIAP2 JOUR' }, { label: 'SSIAP2 NUIT' }, { label: 'SSIAP1 JOUR' }];
 	let usersList = [...db.users];
 
 	$month = [...Array(30).keys()];
@@ -55,10 +49,7 @@ $missions = [
 	const thisFormat = formatter.format(date);
 </script>
 
-
 <section>
-	
-
 	<h2 class="my-3">
 		aujourd'hui: {thisFormat}
 	</h2>

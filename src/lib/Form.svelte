@@ -2,7 +2,15 @@
 	import { Form, FormGroup, Input, Button } from 'sveltestrap';
 	// import { month, dates, checked, selectedDates, jobs } from '$lib/_store/month';
 	// import { name } from '$lib/_store/users';
-	import { month, dates, checked, selectedDates, jobs, selectdate, missions } from '$lib/_store/month';
+	import {
+		month,
+		dates,
+		checked,
+		selectedDates,
+		jobs,
+		selectdate,
+		missions
+	} from '$lib/_store/month';
 	import { name, rank, jobType, job, thoseUsers } from '$lib/_store/users';
 
 	import TableField from './TableField.svelte';
@@ -52,14 +60,19 @@
 <form action="" on:submit|preventDefault={submitJobs}>
 	<div class="w-50 d-flex ">
 		<!-- <label for="job py-auto">Mission</label> -->
-	<select class="form-select form-control border border-dark ms-2" id="job" name="job" bind:value={$job} >
-		<option class="text-dark" value="Mission">--Choisir une vacation--</option>
-		{#each $missions as { label }}
-			<option class="text-dark" value={label}>{label}</option>
-		{/each}
-		<!-- <option class="text-dark" value="SSIAP2 Nuit">SSIAP2 NUIT</o/option> -->
-	</select>
-</div>
+		<select
+			class="form-select form-control border border-dark ms-2"
+			id="job"
+			name="job"
+			bind:value={$job}
+		>
+			<option class="text-dark" value="Mission">--Choisir une vacation--</option>
+			{#each $missions as { label }}
+				<option class="text-dark" value={label}>{label}</option>
+			{/each}
+			<!-- <option class="text-dark" value="SSIAP2 Nuit">SSIAP2 NUIT</o/option> -->
+		</select>
+	</div>
 	<TableField />
 	<DateLine />
 	<!-- 
@@ -70,10 +83,8 @@
 	<Button on:click={addUser} block size="lg" color="primary" class="my-2 ">ajouter agent</Button> -->
 	<!-- <FormButtons on:cancel={cancelForm} size="md" /> -->
 	<div class="d-grid  my-3">
-		<FormButtons  size="md" />
-
+		<FormButtons size="md" />
 	</div>
-
 </form>
 <!-- <div class="form-check form-switch">
 	<input

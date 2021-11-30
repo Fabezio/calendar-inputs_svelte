@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	// import logo from '$lib/../static/favicon.png';
 	// import logo from './svelte-logo.svg';
-	
 </script>
 
 <header>
@@ -18,7 +17,9 @@
 		</svg>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Accueil</a></li>
-			<li class:active={$page.path === '/missions'}><a sveltekit:prefetch href="/missions">Missions</a></li>
+			<li class:active={$page.path === '/missions'}>
+				<a sveltekit:prefetch href="/missions">Missions</a>
+			</li>
 			<!-- <li class:active={$page.path === '/todos'}><a sveltekit:prefetch href="/todos">Todos</a></li> -->
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
