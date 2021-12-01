@@ -66,7 +66,7 @@
 <ul class="list-group">
   <li class="list-group-item">
 	<div class="row text-uppercase fw-bold">
-		<div class="col-2 ">Identité</div>
+		<div class="col-4 ">Identité</div>
 		<div class="col-3">
 			Numéro de Téléphone
 		</div>
@@ -74,7 +74,7 @@
       Adresse Email
 			
 		</div>
-		<div class="col-3">
+		<div class="col-2">
       Actions
 			
 		</div>
@@ -83,13 +83,13 @@
 		<!-- {/if} -->
 	</div>
 </li>
-{#each workers as { nom, prenom, email, phone }}
+{#each workers as { _id, nom, prenom, email, phone }}
 
 	{#if nom !== 'inconnu'}
   <li class="list-group-item">
 		<div class="row">
 
-			<div class="col-2 text-capitalize fw-bold">{nom}, {prenom}</div>
+			<div class="col-4 text-capitalize fw-bold">{nom}, {prenom}</div>
       <div class="col-3">
         {#if phone.length >= 10 && phone.match(/[0-9]/) && phone !== "1234567890" }
           N°: {phone}
@@ -102,8 +102,8 @@
         
         {/if}
       </div>
-      <div class="col-1">
-      <FormButtons size="sm" />
+      <div class="col-2">
+      <FormButtons on:erase={removeWorker(_id)} erase=true size="sm" />
       </div>
 
       <!-- {@debug email} -->

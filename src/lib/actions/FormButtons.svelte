@@ -4,9 +4,10 @@
 
 	import '../../main.scss';
 	export let size = '';
+	export let erase = false
 	// export let block = false;
 	const dispatch = createEventDispatcher();
-	const contents = [
+	let contents = [
 		{ type: 'submit', color: 'primary', label: 'valider', icon: 'check', dispatcher: 'submit' },
 		{
 			type: 'reset',
@@ -15,8 +16,9 @@
 			icon: 'arrow-counterclockwise',
 			dispatcher: 'reset'
 		}
-		// { type: '', color: 'danger', label: 'annuler', icon: 'trash', dispatcher: "cancel" }
+		
 	];
+	$: if (erase) contents = [...contents, { type: '', color: 'danger', label: 'annuler', icon: 'trash', dispatcher: "erase" }]
 </script>
 
 <ButtonGroup {size}>
